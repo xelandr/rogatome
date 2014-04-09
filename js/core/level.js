@@ -12,12 +12,16 @@ function Level()
 	that.map = NaN;
 	that.layer1 = NaN;
 	that.created = false;
+	that.startx = 0;
+	that.starty = 0;
+	that.finishx = 0;
+	that.finishy = 0;
 	
 	that.create = function()
 	{
 		that.map = game.add.tilemap();
 		that.map.addTilesetImage('ts_tileset','tileset', 48, 48);
-		
+
 		//  Creates a new blank layer and sets the map dimensions.
 		that.layer1 = that.map.create('level1', that.size*that.roomSize, that.size*that.roomSize, 48, 48);
 
@@ -45,6 +49,8 @@ function Level()
 						if(start && x == 0 && x1 == 0 && tileType == 1)
 						{
 							start = false;
+							that.startx = x*that.roomSize + x1;
+							that.starty = y*that.roomSize + y1;
 						}
 						if( x == that.size-1 && x1 == that.roomSize-1 && !finish )
 						{
@@ -53,6 +59,8 @@ function Level()
 						if(finish && x == that.size-1 && x1 == that.roomSize-1 && tileType == 1)
 						{
 							finish = false;
+							that.finishx = x*that.roomSize + x1;
+							that.finishy = y*that.roomSize + y1;
 						}
 						if( y == 0 && y1 == 0 || y == that.size-1 && y1 == that.roomSize-1)
 						{
@@ -63,6 +71,7 @@ function Level()
 				}
 			}
 		}
+		that.map.setCollision(0);
 		that.created = true;
 	}
 	
