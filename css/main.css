@@ -1,0 +1,15 @@
+body, html {
+margin: 0;
+background-color: black;
+}
+canvas {
+display: block;
+border: 3px solid white;
+margin : auto;
+}
+#loading_text {
+    color:white;
+    position:fixed;
+    top:50%;
+    left: -webkit-calc(50% - 50px);
+}
