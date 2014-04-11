@@ -70,6 +70,7 @@ function RogaTime() {
     that.render = function () 
 	{
 		that.level.render();
+		game.debug.spriteCoords(that.player.sprite, 320, 32);
 	};
 }
 
