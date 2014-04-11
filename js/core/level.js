@@ -66,6 +66,10 @@ function Level()
 						{
 							tileType = 0;
 						}
+						if(tileType != 0 && Math.random() > 0.7 )
+						{
+							tileType = Math.floor(Math.random() * 5) + 1;
+						}
 						that.map.putTile(tileType, x*that.roomSize + x1, y*that.roomSize + y1, that.layer1);
 					}
 				}
