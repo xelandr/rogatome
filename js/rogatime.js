@@ -64,13 +64,19 @@ function RogaTime() {
 	that.update = function () 
 	{
 		game.physics.arcade.collide(that.player.sprite, that.level.layer1);
-		that.player.update();
+		that.player.update(that);
 	};
+
+	that.step = function () 
+	{
+		
+	}
 
     that.render = function () 
 	{
 		that.level.render();
 		game.debug.spriteCoords(that.player.sprite, 320, 32);
+		that.player.debugRender();
 	};
 }
 

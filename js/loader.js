@@ -29,7 +29,9 @@ function Loader(){
 			false
 		);
 		that.hide_loading_text();
-
+		document.oncontextmenu = function () {
+		   return false;
+		};
 	}
 
 }

@@ -23,7 +23,7 @@ function Level()
 		that.map.addTilesetImage('ts_tileset','tileset', 48, 48);
 
 		//  Creates a new blank layer and sets the map dimensions.
-		that.layer1 = that.map.create('level1', that.size*that.roomSize, that.size*that.roomSize, 48, 48);
+		that.layer1 = that.map.create('level1', that.size*that.roomSize*2, that.size*that.roomSize*2, 48, 48);
 
 		//  Resize the world
 		that.layer1.resizeWorld();
@@ -66,11 +66,16 @@ function Level()
 						{
 							tileType = 0;
 						}
-						if(tileType != 0 && Math.random() > 0.7 )
+						for(var sub = 0; sub<4; sub++)
 						{
-							tileType = Math.floor(Math.random() * 5) + 1;
+							if(tileType != 0 && Math.random() > 0.7 )
+							{
+								tileType = Math.floor(Math.random() * 5) + 1;
+							}
+							var tempx = sub - Math.floor(sub/2)*2;
+							var tempy = Math.floor(sub/2);
+							that.map.putTile(tileType, (x*that.roomSize + x1)*2 + tempx, (y*that.roomSize + y1)*2 + tempy, that.layer1);
 						}
-						that.map.putTile(tileType, x*that.roomSize + x1, y*that.roomSize + y1, that.layer1);
 					}
 				}
 			}
@@ -128,6 +133,8 @@ function Level()
 			}
 		}
 	}
+	
+	
 	
 	that.render = function()
 	{
