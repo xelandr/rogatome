@@ -54,8 +54,8 @@ function RogaTime() {
 		for (i = that.to_be_called_at_create.length - 1; i >= 0; i -= 1) {
 			that.to_be_called_at_create[i].create();
 		}
-		that.player.sprite.x = that.level.startx * 48 + 24;
-		that.player.sprite.y = that.level.starty * 48 + 24;
+		that.player.sprite.x = that.level.startx * 32 + 16;
+		that.player.sprite.y = that.level.starty * 32 + 16;
 		//document.addEventListener('touchstart', that.car.jump, false);
 		//document.addEventListener('mousedown', that.car.jump, false);
 
@@ -64,12 +64,15 @@ function RogaTime() {
 	that.update = function () 
 	{
 		game.physics.arcade.collide(that.player.sprite, that.level.layer1);
-		that.player.update(that);
+		that.player.update();
 	};
 
 	that.step = function () 
 	{
-		
+		if(that.level.created)
+		{
+			that.level.createPath();
+		}
 	}
 
     that.render = function () 

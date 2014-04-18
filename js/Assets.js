@@ -5,7 +5,8 @@ function Assets(){
 	that.audioFolder = "data/audio";
 
 	that.load = function(){
-		game.load.image('tileset', that.folder + '/tiles1.png');
+		game.load.image('tileset', that.folder + '/tiles1_32.png');
+		game.load.spritesheet('ui_tiles', that.folder + '/UI_tiles.png', 32, 32);
 		game.load.image('template', that.folder + '/templates.png');
 		game.load.spritesheet('char', that.folder + '/char.png', 32, 32);
 		

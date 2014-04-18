@@ -25,12 +25,13 @@ function Player(){
 
 	}
 	
-	that.update = function(main)
+	that.update = function()
 	{
 		if (game.input.mousePointer.isDown)
 		{
-			that.targetx = main.level.layer1.getTileX(game.input.worldX) * 48 + 24;
-			that.targety = main.level.layer1.getTileY(game.input.worldY) * 48 + 24;
+			rogatime.step();
+			that.targetx = rogatime.level.layer1.getTileX(game.input.worldX) * 32 + 16;
+			that.targety = rogatime.level.layer1.getTileY(game.input.worldY) * 32 + 16;
 			that.spriteTrgt.x = that.targetx;
 			that.spriteTrgt.y = that.targety;
 			game.physics.arcade.moveToXY( that.sprite, that.targetx, that.targety, 400 );
@@ -38,6 +39,8 @@ function Player(){
 		if (Phaser.Rectangle.contains(that.sprite.body, that.targetx, that.targety))
 		{
 			that.sprite.body.velocity.setTo(0, 0);
+			that.sprite.x = that.targetx;
+			that.sprite.y = that.targety;
 		}
 		that.dbg_line1.setTo(that.sprite.x, that.sprite.y, that.targetx, that.targety);
 	}
@@ -46,6 +49,6 @@ function Player(){
 	{
 		game.debug.geom(that.dbg_line1);
 		game.context.strokeStyle="#FF0000";
-		game.context.strokeRect(that.targetx - 24, that.targety - 24, that.size, that.size);
+		game.context.strokeRect(that.targetx - 16, that.targety - 16, that.size, that.size);
 	}
 }
