@@ -16,12 +16,12 @@ function SoundManager(main){
 		{
             that.mute();
         }
-    }
+    };
     
     that.start_main_theme = function()
     {
         that.main_theme.play( '', 0, 1, true, false );
-    }
+    };
 
     that.mute = function(){
         if(that.is_paused === true){
@@ -30,6 +30,6 @@ function SoundManager(main){
             game.sound.mute = true;
         }
         that.is_paused = !that.is_paused;
-    }
+    };
 
 }

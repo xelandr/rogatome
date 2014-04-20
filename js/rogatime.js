@@ -56,14 +56,12 @@ function RogaTime() {
 		}
 		that.player.sprite.x = that.level.startx * 32 + 16;
 		that.player.sprite.y = that.level.starty * 32 + 16;
-		//document.addEventListener('touchstart', that.car.jump, false);
-		//document.addEventListener('mousedown', that.car.jump, false);
-
+		that.player.setTarget( that.player.sprite.x, that.player.sprite.y );
+		that.step();
 	};
 
 	that.update = function () 
 	{
-		game.physics.arcade.collide(that.player.sprite, that.level.layer1);
 		that.player.update();
 	};
 
@@ -73,7 +71,7 @@ function RogaTime() {
 		{
 			that.level.createPath();
 		}
-	}
+	};
 
     that.render = function () 
 	{

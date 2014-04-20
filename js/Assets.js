@@ -11,5 +11,5 @@ function Assets(){
 		game.load.spritesheet('char', that.folder + '/char.png', 32, 32);
 		
 		game.load.audio( 'snd_main', that.audioFolder + '/main.mp3', true );		
-	}
+	};
 }

@@ -21,7 +21,7 @@ function Room()
 		if(fwd == 1) that.revertSides();
 		that.generateTemplateId();
 		that.generateTiles();
-	}
+	};
 
 	that.generateTemplateId = function()
 	{
@@ -70,7 +70,7 @@ function Room()
 			break;
 		}
 		that.templateId = row*that.size + Math.floor(Math.random() * that.size);
-	}
+	};
 	that.formSides = function()
 	{
 		switch(that.type)
@@ -100,13 +100,13 @@ function Room()
 			that.b = 1;
 			break;
 		}
-	}
+	};
 	
 	that.revertSides = function()
 	{
 		that.l = [that.r, that.r = that.l][0];
 		that.t = [that.b, that.b = that.t][0];
-	}
+	};
 	
 	that.render_room = function( x, y )
 	{
@@ -126,7 +126,7 @@ function Room()
 			break;
 		}
 		game.context.fillRect(x, y, that.size, that.size);
-	}
+	};
 	
 	that.generateTiles = function()
 	{
@@ -154,5 +154,5 @@ function Room()
 				}
 			}
 		}
-	}
+	};
 }

@@ -7,6 +7,8 @@ function Player(){
 	that.targety = 0;
 	that.dbg_line1 = NaN;
 	
+	that.moving = false;
+	
 	that.create = function()
 	{
 		that.spriteTrgt = game.add.sprite(-100, -100, 'char');
@@ -21,34 +23,39 @@ function Player(){
 		that.sprite.body.collideWorldBounds = true;
 		game.camera.follow(that.sprite);
 		that.dbg_line1 = new Phaser.Line(that.sprite.x, that.sprite.y, that.targetx, that.targety);
-
-
-	}
+	};
 	
 	that.update = function()
 	{
-		if (game.input.mousePointer.isDown)
+		if( that.sprite.x != that.targetx || that.sprite.y != that.targety)
 		{
-			rogatime.step();
-			that.targetx = rogatime.level.layer1.getTileX(game.input.worldX) * 32 + 16;
-			that.targety = rogatime.level.layer1.getTileY(game.input.worldY) * 32 + 16;
-			that.spriteTrgt.x = that.targetx;
-			that.spriteTrgt.y = that.targety;
-			game.physics.arcade.moveToXY( that.sprite, that.targetx, that.targety, 400 );
+			that.moving = true;
+			game.physics.arcade.moveToXY( that.sprite, that.targetx, that.targety, 100 );
 		}
-		if (Phaser.Rectangle.contains(that.sprite.body, that.targetx, that.targety))
+		if ( Phaser.Math.distance(that.sprite.x, that.sprite.y, that.targetx, that.targety) < 4)
 		{
+			that.moving = false;
 			that.sprite.body.velocity.setTo(0, 0);
 			that.sprite.x = that.targetx;
 			that.sprite.y = that.targety;
+			rogatime.step();
 		}
 		that.dbg_line1.setTo(that.sprite.x, that.sprite.y, that.targetx, that.targety);
-	}
+	};
 	
 	that.debugRender = function()
 	{
 		game.debug.geom(that.dbg_line1);
 		game.context.strokeStyle="#FF0000";
 		game.context.strokeRect(that.targetx - 16, that.targety - 16, that.size, that.size);
-	}
+	};
+	
+	that.setTarget = function( x, y )
+	{
+		that.moving = true;
+		that.targetx = x;
+		that.targety = y;
+		that.spriteTrgt.x = that.targetx;
+		that.spriteTrgt.y = that.targety;
+	};
 }
