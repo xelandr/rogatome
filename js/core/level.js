@@ -71,6 +71,12 @@ function Level( )
 							var tempx = sub - Math.floor( sub / 2 ) * 2;
 							var tempy = Math.floor( sub / 2 );
 							that.map.putTile( tileType, ( x * that.roomSize + x1 ) * 2 + tempx, ( y * that.roomSize + y1 ) * 2 + tempy, that.layer1 );
+							var enemx = ( x * that.roomSize + x1 ) * 2 + tempx;
+							var enemy = ( y * that.roomSize + y1 ) * 2 + tempy;
+							if (tileType != 0 && Math.random( ) < 0.04)
+							{
+								rogatime.enemyMgr.add( enemx * that.tileSpriteSize + that.tileSpriteSize/2, enemy * that.tileSpriteSize + that.tileSpriteSize/2 );
+							}
 						}
 					}
 				}

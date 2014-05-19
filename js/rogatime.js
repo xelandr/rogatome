@@ -29,13 +29,15 @@ function RogaTime() {
 		that.player = new Player();
 		
 		that.level = new Level();
+		that.enemyMgr = new EnemyManager();
 
 		// obj.create() will be called from JetBuggy.create()
 
 		that.to_be_called_at_create = [
 			that.player,
 			that.sound_manager,
-			that.level
+			that.level,
+			that.enemyMgr,
 		];
 
 	};

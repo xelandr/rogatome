@@ -8,6 +8,7 @@ var requires = [
 	"core/level",
 	"core/room",
 	"core/player",
+	"core/enemyMgr",
 	
     "rogatime"
 ];
