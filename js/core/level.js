@@ -187,5 +187,5 @@ function Level( )
 	that.move = function(sprite, pointer)
 	{
 		rogatime.player.setTarget( sprite.x + that.tileSpriteSize/2, sprite.y + that.tileSpriteSize/2);
-	}
+	};
 }
